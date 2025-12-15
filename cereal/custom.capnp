@@ -483,11 +483,71 @@ struct CustomReserved15 @0xbd443b539493bc68 {
 struct CustomReserved16 @0xfc6241ed8877b611 {
 }
 
-struct CustomReserved17 @0xa30662f84033036c {
+enum MapdExtendedOutType {
+  paths @0;
+  settings @1;
 }
 
-struct CustomReserved18 @0xc86a3d38d13eb3ef {
+struct MapdExtendedOut @0xa30662f84033036c {
+  type @0 :MapdExtendedOutType;
 }
 
-struct CustomReserved19 @0xa4f1eb3323f5f582 {
+enum MapdInputType {
+    download @0;
+    setTargetLateralAccel @1;
+    setSpeedLimitOffset @2;
+    setSpeedLimitControl @3;
+    setCurveSpeedControl @4;
+    setVisionCurveSpeedControl @5;
+    setLogLevel @6;
+    setVtscTargetLatA @7;
+    setVtscMinTargetV @8;
+    reloadSettings @9;
+    saveSettings @10;
+    setEnableSpeed @11;
+    setVtscUseEnableSpeed @12;
+    setCurveUseEnableSpeed @13;
+    setSpeedLimitUseEnableSpeed @14;
+}
+
+enum SpeedLimitOffsetType {
+  static @0;
+  percent @1;
+}
+
+struct MapdIn @0xc86a3d38d13eb3ef {
+  type @0 :MapdInputType;
+  float @1 :Float32;
+  str @2 :Text;
+  bool @3 :Bool;
+}
+
+enum RoadContext {
+  freeway @0;
+  city @1;
+  unknown @2;
+}
+
+struct MapdOut @0xa4f1eb3323f5f582 {
+  wayName @0 :Text;
+  wayRef @1 :Text;
+  roadName @2 :Text;
+  speedLimit @3 :Float32;
+  nextSpeedLimit @4 :Float32;
+  nextSpeedLimitDistance @5 :Float32;
+  hazard @6 :Text;
+  nextHazard @7 :Text;
+  nextHazardDistance @8 :Float32;
+  advisorySpeed @9 :Float32;
+  nextAdvisorySpeed @10 :Float32;
+  nextAdvisorySpeedDistance @11 :Float32;
+  oneWay @12 :Bool;
+  lanes @13 :UInt8;
+  tileLoaded @14 :Bool;
+  speedLimitOffset @15 :Float32;
+  suggestedSpeed @16 :Float32;
+  estimatedRoadWidth @17 :Float32;
+  roadContext @18 :RoadContext;
+  distanceFromWayCenter @19 :Float32;
+  vtscSpeed @20 :Float32;
 }
